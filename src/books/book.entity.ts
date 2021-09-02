@@ -10,7 +10,7 @@ export class Book {
   Name: string;
 
   // зависимость одна книга на одного юзера, один юзер - много книг
-  @ManyToOne(type => User, user => user.books)
+  @ManyToOne(type => User, user => user.books, {onDelete:'SET NULL'})
   @JoinColumn({name:"user_id"})
   user: User;
 }

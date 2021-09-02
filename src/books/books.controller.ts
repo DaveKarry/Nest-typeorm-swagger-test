@@ -35,9 +35,9 @@ export class BooksController {
   @Patch('/:bookId/rent')
   async AddBook(
     @Param('bookId') bookId: string,
-    @Body() user: User
+    @Body('id') userId: string
   ) {
-    return this.booksService.AddBook(bookId, user)
+    return this.booksService.AddBook(bookId, userId)
   }
 
   @ApiOperation({ summary: 'Вернуть книгу' })

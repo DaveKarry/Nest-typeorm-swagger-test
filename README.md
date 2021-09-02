@@ -175,12 +175,8 @@ Get: /books/{bookId}/rent
 Params:
 Id книги
 Request body:
-Пользователь
-{
-    "id": 2,
-    "Name": "Вася ы",
-    "withAbonnement": true
-}
+Id пользователя
+"id": 2,
 Responses
 {
   "id": 7,

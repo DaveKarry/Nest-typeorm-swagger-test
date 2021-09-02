@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UserDto } from './dto/user.dto';
 import { ApiBody, ApiOperation, ApiParam, ApiProperty, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -16,10 +16,9 @@ export class UsersController {
   @ApiOperation({summary: 'Создание пользователя'})
   @ApiResponse({status:200, type: User})
   @Post()
+  @UsePipes(new ValidationPipe())
   create(@Body() userDto: UserDto){
-    const user = new User()
-    user.Name = userDto.name
-    return this.usersService.createUser(user)
+    return this.usersService.createUser(userDto)
   }
 
   @ApiOperation({summary: 'Получить всех пользователей'})
